@@ -1,5 +1,8 @@
 # Real Time Web course repo
 
+Write down what your project’s all about, what you want to accomplish this week, and the coming weeks.
+
+
 This is the course repo for the 2018 edition of the course 'Real Time Web' which is part of the minor 'web' taught at the University of Applied Sciences Amsterdam.
 
 During this course, students will:

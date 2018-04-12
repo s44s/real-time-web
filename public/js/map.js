@@ -1,8 +1,6 @@
 var markers = {};
 var map;
 var socket = io();
-var googleMaps = document.getElementById('map');
-googleMaps.style.display = "none";
 
 socket.on('chat message', function(msg){
 	if(msg.message.includes("weesperplein")){
@@ -10,7 +8,9 @@ socket.on('chat message', function(msg){
 			lat: 52.361734,
 			lng: 4.907702
 		};
-		googleMaps.style.display = "block";
+		var maps = document.getElementById('map');
+		maps.style.display = "block"
+
 		newMarker(locatie);
 	}
 
@@ -19,20 +19,31 @@ socket.on('chat message', function(msg){
 			lat: 52.368054,
 			lng: 4.902201
 		};
-		googleMaps.style.display = "block";
+
+		var maps = document.getElementById('map');
+		maps.style.display = "block"
+
 		newMarker(locatie);
 	}
 });
 
 function initMap() {
-  URL = window.location.href;
-  socket = io.connect(URL);
-  socket.on("connect", function() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: {lat: 52.379189, lng: 4.899431}
-    });
-  });
+	URL = window.location.href;
+	socket = io.connect(URL);
+	socket.on("connect", function() {
+		var messages = document.getElementById('messages');
+		var div = document.createElement('div')
+		div.id = "map";
+		var googleMaps = messages.appendChild(div);
+
+		div.style.display = "none"
+
+
+		map = new google.maps.Map(googleMaps, {
+				zoom: 11.9,
+				center: {lat: 52.379189, lng: 4.899431}
+		});
+	});
 }
 
 function newMarker(location) {

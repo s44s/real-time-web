@@ -1,16 +1,33 @@
 <%- include('partials/head.ejs') %>
     <ul id="messages"></ul>
-		<div id="map"></div>
+		<div id="map" style="display: none;"></div>
 
     <form action="">
-			<input class="username" type="text" maxlength="14" />
-      <input id="m" autocomplete="off" />
+			<input placeholder="username" class="username" type="text" maxlength="14" />
+      <input placeholder="message" id="m" autocomplete="off" />
 			<button>Send</button>
     </form>
 
-	  <input type="radio" name="color" value="blue"> Blue
-	  <input type="radio" name="color" value="red"> Red
-	  <input type="radio" name="color" value="green"> Green
+		<section>
+			<div>
+				<input id="gold" type="radio" name="color" value="gold">
+				<label for="gold">Gold</label>
+			</div>
+			<div>
+				<input id="crimson" type="radio" name="color" value="crimson">
+				<label for="crimson">Crimson</label>
+			</div>
+			<div>
+				<input id="coral" type="radio" name="color" value="coral">
+				<label for="coral">Coral</label>
+			</div>
+			<div>
+				<input id="darkSeaGreen" type="radio" name="color" value="darkSeaGreen ">
+				<label for="darkSeaGreen">Gold</label>
+			</div>
+
+
+	</section>
 
 		<!-- Socket.io -->
 		<script src="/socket.io/socket.io.js"></script>

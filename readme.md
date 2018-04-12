@@ -25,3 +25,4 @@ Run ``` npm start ``` to start the server on port 3000.
 - [ ] Add a unique function to the basic chat assignment.
 - [ ] Deploy the app.
 - [ ] Add user names to the chat messages
+- [ ] 'Optimize later....'

@@ -1,7 +1,9 @@
 <%- include('partials/head.ejs') %>
-
     <ul id="messages"></ul>
+		<div id="map"></div>
+
     <form action="">
+			<input class="username" type="text" maxlength="14" />
       <input id="m" autocomplete="off" />
 			<button>Send</button>
     </form>
@@ -9,8 +11,6 @@
 	  <input type="radio" name="color" value="blue"> Blue
 	  <input type="radio" name="color" value="red"> Red
 	  <input type="radio" name="color" value="green"> Green
-
-		 <div id="map"></div>
 
 		<!-- Socket.io -->
 		<script src="/socket.io/socket.io.js"></script>

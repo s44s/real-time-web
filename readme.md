@@ -35,7 +35,6 @@ Run ``` npm start ``` to start the server on port 3000.
 ![alt text](./screenshots/4.png "Logo Title Text 1")
 
 ## To do
-- [ ] Add a unique function to the basic chat assignment.
-- [ ] Deploy the app.
-- [ ] Add user names to the chat messages
-- [ ] 'Optimize later....'
+- [ ] Show the map on the specific place in the chat
+- [ ] Use a database/api for the specific locations
+- [ ] 'Build first, optimize later....'

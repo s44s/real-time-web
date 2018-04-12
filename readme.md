@@ -5,7 +5,7 @@ Start with the basic chat then add a unqiue feature to understand the workings o
 
 #### Preview of what I've made so far
 
-![](file:///Users/jamie/Desktop/preview.png)
+![](https://raw.githubusercontent.com/s44s/real-time-web/readme-suggestion/preview.png)
 
 ## Installation
 Download or clone project, navigate to root folder. Install dependencies.

@@ -1,33 +1,38 @@
+var markers = {};
+var map;
+var socket;
+
 function initMap() {
-  var uluru = {lat: -25.363, lng: 131.044};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: uluru
-  });
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-}
-if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        initialLocation = new google.maps.LatLng(position.coords.latitude,
-                                                 position.coords.longitude);
-        map.setCenter(initialLocation);
+  URL = window.location.href;
+  socket = io.connect(URL);
+  socket.on("connect", function() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: {lat: 10.777829, lng: 106.681630}
     });
+  });
+  socket.on("locationUpdated", function(locationState){
+      for (var k in locationState) {
+          newMarker(k, locationState[k]);
+      }
+  });
 }
 
-google.maps.event.addListener(map, 'bounds_changed', function(){
-    var mapbounds = map.getBounds();
-    bounds = [[mapbounds.getSouthWest().lng(),
-               mapbounds.getSouthWest().lat()],
-              [mapbounds.getNorthEast().lng(),
-               mapbounds.getNorthEast().lat()]];
-    socket.send({action:"subscribe", bounds:bounds});
-});
-
-var latlon = map.getCenter();
-var lat = latlon.lat(),
-    lon = latlon.lng();
-var point = {"type":"Point", "coordinates":[lon, lat]};
-socket.send({action:"message", message:chatmsg,  geometry:point});
+function newMarker(k, location) {
+	if (markers[k] == null) {
+	  markers[k] = new google.maps.Marker({
+	      position : location,
+	      map: map,
+	      icon: {
+	          url: '../images/truck.png',
+	          size: new google.maps.Size(100, 100),
+	          scaledSize: new google.maps.Size(50, 50),
+	          origin: new google.maps.Point(0, 0),
+	          anchor: new google.maps.Point(25, 25),
+	          optimized: false
+	      }
+	    });
+	} else {
+	    markers[k].setPosition(location);
+	}
+}
